@@ -1,0 +1,38 @@
+service: catchat-openai-demo-backend
+
+plugins:
+  - serverless-esbuild
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ca-central-1
+  stackName: catchat-openai-demo-backend
+  versionFunctions: false
+  deploymentBucket:
+    name: ${env:AWS_S3_BUCKET_NAME}
+  environment:
+    OPENAI_KEY: ${env:OPENAI_API_KEY}
+
+custom:
+  esbuild:
+    bundle: true
+    minify: false
+    sourcemap: false
+    exclude: ['aws-sdk']
+    target: node18
+    platform: node
+    concurrency: 10
+
+functions:
+  callopenAI:
+    handler: handler.main
+    url:
+      cors:
+        allowedOrigins:
+          - http://localhost:5173
+        allowedMethods:
+          - '*'
+    timeout: 120
