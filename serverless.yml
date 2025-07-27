@@ -32,7 +32,7 @@ functions:
     url:
       cors:
         allowedOrigins:
-          - http://localhost:5173
+          - https://68865c9248f9df000826a1ad--lovely-lokum-e7b7e8.netlify.app
         allowedMethods:
           - '*'
     timeout: 120

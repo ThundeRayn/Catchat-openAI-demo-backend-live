@@ -59,6 +59,11 @@ export async function main(event: APIGatewayEvent) {
 
         return {
             statusCode: 200,
+            headers: {
+                "Access-Control-Allow-Origin": "https://68865e98777471eb16c0ffb3--lovely-lokum-e7b7e8.netlify.app",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Methods": "POST, OPTIONS",
+            },
             body: result
         };
 
